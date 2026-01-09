@@ -7,21 +7,27 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
-// Serve static files
-app.use(express.static(__dirname));
-
-// SPA fallback - serve index.html for all routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// Health check endpoint
+// Health check endpoint (before static files)
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
+// Serve static files from current directory
+app.use(express.static(path.join(__dirname)));
+
+// Root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// SPA fallback - serve index.html for all other routes
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`🌐 TAIN Games Website running on port ${PORT}`);
+    console.log(`📁 Serving from: ${__dirname}`);
 });
