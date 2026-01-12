@@ -7,20 +7,38 @@
     <title>TAIN Games - The Future of Competitive Pool</title>
     <meta name="description" content="Play-to-Earn 8-Ball Pool on the Blockchain. Compete, Win, Earn TAIN Tokens.">
 
-    <!-- Fonts -->
-    <span class="logo-text">TAIN<span class="gradient-text">GAMES</span></span>
-    </a>
-    <div class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#features">Features</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#trade">Trade</a>
-        <a href="#roadmap">Roadmap</a>
-    </div>
-    <button class="btn-connect" id="connectWallet">
-        <span>🔗 Connect Wallet</span>
-    </button>
-    </div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=2">
+
+    <!-- Ethers.js -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+    <!-- 3D Background Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">🎱</span>
+                <span class="logo-text">TAIN<span class="gradient-text">GAMES</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#trade">Trade</a>
+                <a href="#roadmap">Roadmap</a>
+            </div>
+            <button class="btn-connect" id="connectWallet">
+                <span>🔗 Connect Wallet</span>
+            </button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -314,7 +332,8 @@
         </div>
     </footer>
 
-    <script src="app.js"></script>
-    </body>
+    <script src="background.js?v=2"></script>
+    <script src="app.js?v=2"></script>
+</body>
 
 </html>
