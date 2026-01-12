@@ -13,24 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-            // Easing function
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-
             const currentVal = Math.floor(easeOutQuart * (end - start) + start);
             obj.innerHTML = `${prefix}${currentVal.toLocaleString()}${suffix}`;
-
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
+            if (progress < 1) window.requestAnimationFrame(step);
         };
         window.requestAnimationFrame(step);
     };
 
-    // Trigger stats animation when in view
     const statsSection = document.querySelector('.hero-stats');
     let animated = false;
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !animated) {
@@ -42,12 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { threshold: 0.5 });
-
     if (statsSection) observer.observe(statsSection);
 
     // === Scroll Reveal Animation ===
-    const revealElements = document.querySelectorAll('.feature-card, .timeline-item, .token-stat');
-
+    const revealElements = document.querySelectorAll('.feature-card, .timeline-item, .token-stat, .token-info-card');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -76,21 +66,98 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // === Wallet Connect (Mock) ===
+    // === Wallet Connect ===
     const connectBtn = document.getElementById('connectWallet');
-    connectBtn.addEventListener('click', async () => {
-        const originalText = connectBtn.innerHTML;
-        connectBtn.innerHTML = '<span>⏳ Connecting...</span>';
+    const swapBtn = document.getElementById('swap-btn');
+    let isConnected = false;
 
-        // Simulate connection delay
+    const connectWallet = async () => {
+        if (isConnected) return;
+
+        const btnText = connectBtn.querySelector('span') || connectBtn;
+        const originalText = btnText.innerText;
+        btnText.innerText = '⏳ Connecting...';
+        if (swapBtn) swapBtn.innerText = 'Connecting...';
+
         setTimeout(() => {
-            connectBtn.innerHTML = '<span>✅ Connected</span>';
+            isConnected = true;
+            const shortAddress = '0x71...39A2';
+            btnText.innerText = shortAddress;
             connectBtn.style.borderColor = '#00f2ff';
             connectBtn.style.background = 'rgba(0, 242, 255, 0.1)';
 
-            setTimeout(() => {
-                connectBtn.innerHTML = '<span>0x71...39A2</span>';
-            }, 1000);
+            if (swapBtn) {
+                swapBtn.innerText = 'Swap';
+                swapBtn.classList.remove('btn-connect-wallet');
+            }
+
+            // Update balances
+            document.getElementById('pay-balance').innerText = '2.54';
+            document.getElementById('receive-balance').innerText = '15,400.00';
         }, 1500);
+    };
+
+    if (connectBtn) connectBtn.addEventListener('click', connectWallet);
+    if (swapBtn) swapBtn.addEventListener('click', () => {
+        if (!isConnected) connectWallet();
+        else alert('Swap feature coming soon! (Contract integration required)');
     });
 });
+
+// === Global Swap Functions ===
+window.swapMode = 'buy';
+window.tainPrice = 10000; // 1 BNB = 10,000 TAIN
+
+window.setSwapMode = (mode) => {
+    window.swapMode = mode;
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(t => t.classList.remove('active'));
+
+    // Update UI based on mode
+    if (mode === 'buy') {
+        tabs[0].classList.add('active');
+        document.querySelector('#pay-token span').innerText = 'BNB';
+        document.querySelector('#pay-token img').src = 'https://cryptologos.cc/logos/bnb-bnb-logo.png';
+        document.querySelector('#receive-token span').innerText = 'TAIN';
+        document.querySelector('#receive-token .tain-emoji').style.display = 'inline';
+    } else {
+        tabs[1].classList.add('active');
+        document.querySelector('#pay-token span').innerText = 'TAIN';
+        document.querySelector('#pay-token img').style.display = 'none'; // Hide BNB icon
+        document.querySelector('#pay-token').innerHTML = '<span class="tain-emoji">🎱</span><span>TAIN</span>';
+
+        document.querySelector('#receive-token span').innerText = 'BNB';
+        document.querySelector('#receive-token').innerHTML = '<img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB"><span>BNB</span>';
+    }
+
+    // Reset inputs
+    document.getElementById('pay-amount').value = '';
+    document.getElementById('receive-amount').value = '';
+};
+
+window.calculateSwap = () => {
+    const payAmount = parseFloat(document.getElementById('pay-amount').value);
+    const receiveInput = document.getElementById('receive-amount');
+
+    if (isNaN(payAmount)) {
+        receiveInput.value = '';
+        return;
+    }
+
+    if (window.swapMode === 'buy') {
+        // Buy: BNB -> TAIN
+        receiveInput.value = (payAmount * window.tainPrice).toFixed(2);
+    } else {
+        // Sell: TAIN -> BNB
+        receiveInput.value = (payAmount / window.tainPrice).toFixed(6);
+    }
+};
+
+window.copyAddress = () => {
+    const address = document.getElementById('contract-address').innerText;
+    navigator.clipboard.writeText(address).then(() => {
+        const btn = document.querySelector('.btn-copy');
+        btn.innerText = '✅';
+        setTimeout(() => btn.innerText = '📋', 2000);
+    });
+};
