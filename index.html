@@ -4,149 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAIN Games - Play to Earn Pool Game</title>
-    <meta name="description"
-        content="TAIN Games - The ultimate play-to-earn 8-Ball Pool game. Compete, earn TAIN tokens, and win real rewards.">
+    <title>TAIN Games - The Future of Competitive Pool</title>
+    <meta name="description" content="Play-to-Earn 8-Ball Pool on the Blockchain. Compete, Win, Earn TAIN Tokens.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Ethers.js for wallet connection -->
+    <!-- Ethers.js -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
 </head>
 
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-grid"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
                 <span class="logo-icon">🎱</span>
-                <span class="logo-text">TAIN<span class="accent">Games</span></span>
+                <span class="logo-text">TAIN<span class="gradient-text">GAMES</span></span>
             </a>
             <div class="nav-links">
-                <a href="#about">About</a>
+                <a href="#hero">Home</a>
+                <a href="#features">Features</a>
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
-                <a href="#buy">Buy TAIN</a>
             </div>
             <button class="btn-connect" id="connectWallet">
-                <span class="wallet-icon">🔗</span>
-                <span id="walletText">Connect Wallet</span>
+                <span>🔗 Connect Wallet</span>
             </button>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-bg-effects">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-            <div class="grid-overlay"></div>
+        <div class="floating-elements">
+            <div class="float-item float-1"></div>
+            <div class="float-item float-2"></div>
+            <div class="float-item float-3"></div>
         </div>
 
         <div class="hero-content">
             <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Play-to-Earn Gaming
+                <span class="badge-dot">●</span> Next Gen Web3 Gaming
             </div>
             <h1 class="hero-title">
-                The Future of<br>
-                <span class="gradient-text">Competitive Pool</span>
+                MASTER THE <br>
+                <span class="gradient-text">VIRTUAL TABLE</span>
             </h1>
             <p class="hero-subtitle">
-                Compete in real-time 8-Ball Pool matches, stake TAIN tokens,
-                and earn rewards. The ultimate mobile gaming experience powered by blockchain.
+                The ultimate Play-to-Earn 8-Ball Pool experience. Stake TAIN tokens, compete in real-time, and dominate
+                the global leaderboards.
             </p>
             <div class="hero-buttons">
-                <a href="#buy" class="btn btn-primary">
-                    <span>Buy TAIN Token</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-                <a href="#download" class="btn btn-secondary">
-                    <span>Download App</span>
-                </a>
+                <a href="#play" class="btn btn-primary">Play Now</a>
+                <a href="#whitepaper" class="btn btn-secondary">Whitepaper</a>
             </div>
+
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-value">50K+</span>
-                    <span class="stat-label">Players</span>
+                    <span class="stat-value" id="stat-players">0</span>
+                    <span class="stat-label">Active Players</span>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-value">$2.5M</span>
-                    <span class="stat-label">Prizes Won</span>
+                    <span class="stat-value" id="stat-prizes">$0</span>
+                    <span class="stat-label">Prizes Paid</span>
                 </div>
-                <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-value">1M+</span>
-                    <span class="stat-label">Games Played</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="phone-mockup">
-                <div class="phone-screen">
-                    <div class="game-preview">
-                        <div class="pool-table-mini">
-                            <div class="ball ball-cue"></div>
-                            <div class="ball ball-1"></div>
-                            <div class="ball ball-2"></div>
-                            <div class="ball ball-8"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="floating-token">
-                <div class="token-coin">
-                    <span>TAIN</span>
+                    <span class="stat-value" id="stat-matches">0</span>
+                    <span class="stat-label">Matches Played</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
+    <!-- Features Section -->
+    <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">About TAIN Games</span>
-                <h2 class="section-title">Play, Compete, <span class="gradient-text">Earn</span></h2>
-                <p class="section-subtitle">
-                    TAIN Games combines skill-based gameplay with blockchain rewards.
-                    Every game you win earns you real TAIN tokens.
-                </p>
+                <span class="section-tag">Why TAIN?</span>
+                <h2 class="section-title">GAME <span class="gradient-text">FEATURES</span></h2>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
-                    <h3>Skill-Based Gaming</h3>
-                    <p>No luck involved. Your skill determines your earnings. Practice, improve, and dominate the
-                        leaderboards.</p>
+                    <h3>Skill-Based</h3>
+                    <p>Pure skill, no luck. Our physics engine ensures fair play where the best player wins.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>Real Rewards</h3>
-                    <p>Stake TAIN tokens on matches. Winners take all. Withdraw earnings directly to your wallet.</p>
+                    <div class="feature-icon">💎</div>
+                    <h3>Earn Crypto</h3>
+                    <p>Win matches to earn TAIN tokens. Stake higher amounts for bigger rewards.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏆</div>
                     <h3>Tournaments</h3>
-                    <p>Compete in daily and weekly tournaments with massive prize pools. Climb the global rankings.</p>
+                    <p>Weekly championships with massive prize pools. Climb the ranks to become a legend.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Secure & Fair</h3>
-                    <p>Blockchain-verified results. All transactions are transparent and immutable on-chain.</p>
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Payouts</h3>
+                    <p>Smart contract integration ensures your winnings are sent directly to your wallet.</p>
                 </div>
             </div>
         </div>
@@ -156,204 +125,44 @@
     <section class="tokenomics" id="tokenomics">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Tokenomics</span>
-                <h2 class="section-title">TAIN Token <span class="gradient-text">Distribution</span></h2>
+                <span class="section-tag">Economy</span>
+                <h2 class="section-title">TOKEN <span class="gradient-text">METRICS</span></h2>
             </div>
 
-            <div class="tokenomics-content">
-                <div class="token-chart">
-                    <div class="chart-ring">
-                        <svg viewBox="0 0 200 200">
-                            <circle class="chart-segment segment-1" cx="100" cy="100" r="80"
-                                stroke-dasharray="150.8 502.65" stroke-dashoffset="0"></circle>
-                            <circle class="chart-segment segment-2" cx="100" cy="100" r="80"
-                                stroke-dasharray="125.66 502.65" stroke-dashoffset="-150.8"></circle>
-                            <circle class="chart-segment segment-3" cx="100" cy="100" r="80"
-                                stroke-dasharray="100.53 502.65" stroke-dashoffset="-276.46"></circle>
-                            <circle class="chart-segment segment-4" cx="100" cy="100" r="80"
-                                stroke-dasharray="75.4 502.65" stroke-dashoffset="-376.99"></circle>
-                            <circle class="chart-segment segment-5" cx="100" cy="100" r="80"
-                                stroke-dasharray="50.27 502.65" stroke-dashoffset="-452.39"></circle>
-                        </svg>
-                        <div class="chart-center">
-                            <span class="total-supply">1B</span>
-                            <span class="supply-label">Total Supply</span>
-                        </div>
+            <div class="token-container">
+                <div class="token-visual">
+                    <div class="token-chart-3d">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+                        <div class="ring ring-3"></div>
+                        <div class="token-center">TAIN</div>
                     </div>
                 </div>
 
-                <div class="token-distribution">
-                    <div class="distribution-item">
-                        <div class="item-color color-1"></div>
-                        <div class="item-info">
-                            <span class="item-label">Game Rewards</span>
-                            <span class="item-value">30%</span>
-                        </div>
+                <div class="token-details">
+                    <div class="token-stat">
+                        <span>Token Name</span>
+                        <span>TAIN Token</span>
                     </div>
-                    <div class="distribution-item">
-                        <div class="item-color color-2"></div>
-                        <div class="item-info">
-                            <span class="item-label">Liquidity Pool</span>
-                            <span class="item-value">25%</span>
-                        </div>
+                    <div class="token-stat">
+                        <span>Symbol</span>
+                        <span>TAIN</span>
                     </div>
-                    <div class="distribution-item">
-                        <div class="item-color color-3"></div>
-                        <div class="item-info">
-                            <span class="item-label">Team & Development</span>
-                            <span class="item-value">20%</span>
-                        </div>
+                    <div class="token-stat">
+                        <span>Network</span>
+                        <span>Binance Smart Chain</span>
                     </div>
-                    <div class="distribution-item">
-                        <div class="item-color color-4"></div>
-                        <div class="item-info">
-                            <span class="item-label">Marketing</span>
-                            <span class="item-value">15%</span>
-                        </div>
+                    <div class="token-stat">
+                        <span>Total Supply</span>
+                        <span>1,000,000,000</span>
                     </div>
-                    <div class="distribution-item">
-                        <div class="item-color color-5"></div>
-                        <div class="item-info">
-                            <span class="item-label">Reserve</span>
-                            <span class="item-value">10%</span>
-                        </div>
+                    <div class="token-stat">
+                        <span>Game Rewards</span>
+                        <span>30%</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="token-info-cards">
-                <div class="info-card">
-                    <span class="info-icon">📊</span>
-                    <span class="info-label">Token Name</span>
-                    <span class="info-value">TAIN</span>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon">🔗</span>
-                    <span class="info-label">Network</span>
-                    <span class="info-value">BSC (BEP-20)</span>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon">💎</span>
-                    <span class="info-label">Total Supply</span>
-                    <span class="info-value">1,000,000,000</span>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon">🔥</span>
-                    <span class="info-label">Tax</span>
-                    <span class="info-value">0% Buy/Sell</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Buy Token Section -->
-    <section class="buy-section" id="buy">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Get Started</span>
-                <h2 class="section-title">Buy <span class="gradient-text">TAIN Token</span></h2>
-                <p class="section-subtitle">
-                    Purchase TAIN tokens to stake on matches and earn rewards
-                </p>
-            </div>
-
-            <div class="buy-container">
-                <div class="buy-card">
-                    <div class="buy-header">
-                        <h3>Swap for TAIN</h3>
-                        <span class="network-badge">BSC Network</span>
-                    </div>
-
-                    <div class="swap-interface">
-                        <div class="swap-input-group">
-                            <label>You Pay</label>
-                            <div class="swap-input">
-                                <input type="number" id="payAmount" placeholder="0.0" step="0.01">
-                                <div class="token-select">
-                                    <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB"
-                                        class="token-icon">
-                                    <span>BNB</span>
-                                </div>
-                            </div>
-                            <span class="balance-display">Balance: <span id="bnbBalance">0.00</span> BNB</span>
-                        </div>
-
-                        <div class="swap-arrow">
-                            <span>↓</span>
-                        </div>
-
-                        <div class="swap-input-group">
-                            <label>You Receive</label>
-                            <div class="swap-input">
-                                <input type="number" id="receiveAmount" placeholder="0.0" readonly>
-                                <div class="token-select tain-token">
-                                    <span class="tain-icon">🎱</span>
-                                    <span>TAIN</span>
-                                </div>
-                            </div>
-                            <span class="rate-display">1 BNB = 10,000 TAIN</span>
-                        </div>
-
-                        <button class="btn btn-swap" id="swapBtn" disabled>
-                            Connect Wallet First
-                        </button>
-                    </div>
-
-                    <div class="buy-options">
-                        <p class="or-divider"><span>or buy on</span></p>
-                        <div class="dex-buttons">
-                            <a href="https://pancakeswap.finance/swap" target="_blank" class="dex-btn">
-                                <img src="https://cryptologos.cc/logos/pancakeswap-cake-logo.png" alt="PancakeSwap">
-                                PancakeSwap
-                            </a>
-                            <a href="#" class="dex-btn">
-                                <span class="dex-icon">📈</span>
-                                DexTools
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="buy-info">
-                    <h3>How to Buy TAIN</h3>
-                    <div class="steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>Connect Wallet</h4>
-                                <p>Click "Connect Wallet" and select MetaMask or your preferred wallet</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Add BNB</h4>
-                                <p>Make sure you have BNB in your wallet on BSC network</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Swap for TAIN</h4>
-                                <p>Enter amount and click swap to receive TAIN tokens</p>
-                            </div>
-                        </div>
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h4>Start Playing</h4>
-                                <p>Download the app and connect your wallet to start earning</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contract-address">
-                        <span class="contract-label">Contract Address</span>
-                        <div class="contract-value" id="contractAddress">
-                            <span>0x1234...5678</span>
-                            <button class="copy-btn" onclick="copyContract()">📋</button>
-                        </div>
-                        <span class="contract-note">Always verify the contract address!</span>
+                    <div class="token-stat">
+                        <span>Liquidity</span>
+                        <span>25%</span>
                     </div>
                 </div>
             </div>
@@ -364,115 +173,41 @@
     <section class="roadmap" id="roadmap">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Our Journey</span>
-                <h2 class="section-title">Development <span class="gradient-text">Roadmap</span></h2>
+                <span class="section-tag">The Path</span>
+                <h2 class="section-title">PROJECT <span class="gradient-text">ROADMAP</span></h2>
             </div>
 
-            <div class="roadmap-timeline">
-                <div class="timeline-item completed">
-                    <div class="timeline-marker">✓</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 1</span>
-                        <h3>Foundation</h3>
-                        <ul>
-                            <li>Game development complete</li>
-                            <li>Smart contract deployment</li>
-                            <li>Website launch</li>
-                            <li>Community building</li>
-                        </ul>
+                        <h3>Inception</h3>
+                        <p>Game concept, physics engine development, and smart contract audit.</p>
                     </div>
                 </div>
-
-                <div class="timeline-item active">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <span class="timeline-phase">Phase 2 - Current</span>
-                        <h3>Launch</h3>
-                        <ul>
-                            <li>Token presale</li>
-                            <li>Mobile app release (iOS & Android)</li>
-                            <li>PancakeSwap listing</li>
-                            <li>First tournament series</li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 2</span>
+                        <h3>Launch</h3>
+                        <p>Website live, Token presale, Beta testing access for early holders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 3</span>
                         <h3>Expansion</h3>
-                        <ul>
-                            <li>CEX listings</li>
-                            <li>NFT cue collection</li>
-                            <li>Staking rewards</li>
-                            <li>Partnership announcements</li>
-                        </ul>
+                        <p>Mobile app release, Global tournaments, CEX listings.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 4</span>
-                        <h3>Global Scale</h3>
-                        <ul>
-                            <li>Esports integration</li>
-                            <li>Major sponsorships</li>
-                            <li>Cross-chain expansion</li>
-                            <li>1M+ active players</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="download" id="download">
-        <div class="container">
-            <div class="download-content">
-                <div class="download-text">
-                    <span class="section-tag">Get the App</span>
-                    <h2 class="section-title">Ready to <span class="gradient-text">Play & Earn?</span></h2>
-                    <p>Download TAIN Games now and start your journey to becoming a pool champion while earning real
-                        rewards.</p>
-
-                    <div class="download-buttons">
-                        <a href="#" class="store-btn">
-                            <div class="store-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                                </svg>
-                            </div>
-                            <div class="store-text">
-                                <span class="store-label">Download on the</span>
-                                <span class="store-name">App Store</span>
-                            </div>
-                        </a>
-                        <a href="#" class="store-btn">
-                            <div class="store-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
-                                </svg>
-                            </div>
-                            <div class="store-text">
-                                <span class="store-label">Get it on</span>
-                                <span class="store-name">Google Play</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="download-visual">
-                    <div class="app-preview">
-                        <div class="preview-phone">
-                            <div class="preview-screen">
-                                <div class="preview-game">🎱</div>
-                            </div>
-                        </div>
+                        <h3>Metaverse</h3>
+                        <p>3D Social Hubs, VR Integration, DAO Governance implementation.</p>
                     </div>
                 </div>
             </div>
@@ -484,59 +219,36 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#" class="footer-logo">
+                    <a href="#" class="nav-logo">
                         <span class="logo-icon">🎱</span>
-                        <span class="logo-text">TAIN<span class="accent">Games</span></span>
+                        <span class="logo-text">TAIN<span class="gradient-text">GAMES</span></span>
                     </a>
-                    <p>The ultimate play-to-earn pool experience. Compete, earn, and dominate.</p>
+                    <p>Redefining competitive gaming with blockchain technology.</p>
                 </div>
-
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Product</h4>
-                        <a href="#about">About</a>
-                        <a href="#tokenomics">Tokenomics</a>
-                        <a href="#roadmap">Roadmap</a>
-                        <a href="#download">Download</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Resources</h4>
-                        <a href="#">Whitepaper</a>
-                        <a href="#">Documentation</a>
-                        <a href="#">FAQ</a>
-                        <a href="#">Support</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Community</h4>
-                        <a href="#">Twitter</a>
-                        <a href="#">Telegram</a>
-                        <a href="#">Discord</a>
-                        <a href="#">Medium</a>
-                    </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <a href="#">Play Now</a>
+                    <a href="#">Tournaments</a>
+                    <a href="#">Leaderboard</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="#">Whitepaper</a>
+                    <a href="#">Audit</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <a href="#">Twitter</a>
+                    <a href="#">Discord</a>
+                    <a href="#">Telegram</a>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 TAIN Games. All rights reserved.</p>
-                <div class="footer-socials">
-                    <a href="#" class="social-link">𝕏</a>
-                    <a href="#" class="social-link">📢</a>
-                    <a href="#" class="social-link">💬</a>
-                </div>
+                &copy; 2026 TAIN Games. All rights reserved.
             </div>
         </div>
     </footer>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#tokenomics" class="mobile-link">Tokenomics</a>
-            <a href="#roadmap" class="mobile-link">Roadmap</a>
-            <a href="#buy" class="mobile-link">Buy TAIN</a>
-            <a href="#download" class="mobile-link">Download</a>
-        </div>
-    </div>
 
     <script src="app.js"></script>
 </body>
