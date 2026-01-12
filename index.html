@@ -38,6 +38,7 @@
                 <a href="#hero">Home</a>
                 <a href="#features">Features</a>
                 <a href="#tokenomics">Tokenomics</a>
+                <a href="#trade">Trade</a>
                 <a href="#roadmap">Roadmap</a>
             </div>
             <button class="btn-connect" id="connectWallet">
@@ -115,45 +116,190 @@
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Instant Payouts</h3>
-                    <span class="section-tag">The Path</span>
-                    <h2 class="section-title">PROJECT <span class="gradient-text">ROADMAP</span></h2>
+                    <p>Smart contract integration ensures your winnings are sent directly to your wallet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section class="tokenomics" id="tokenomics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Economy</span>
+                <h2 class="section-title">TOKEN <span class="gradient-text">METRICS</span></h2>
+            </div>
+
+            <div class="token-grid">
+                <!-- Chart Column -->
+                <div class="token-chart-col">
+                    <div class="chart-container">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-segment segment-1" stroke-dasharray="30, 100"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-segment segment-2" stroke-dasharray="25, 100" stroke-dashoffset="-30"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-segment segment-3" stroke-dasharray="20, 100" stroke-dashoffset="-55"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-segment segment-4" stroke-dasharray="15, 100" stroke-dashoffset="-75"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle-segment segment-5" stroke-dasharray="10, 100" stroke-dashoffset="-90"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        </svg>
+                        <div class="chart-center">
+                            <span class="total-supply">1B</span>
+                            <span class="supply-label">Total Supply</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-phase">Phase 1</span>
-                            <h3>Inception</h3>
-                            <p>Game concept, physics engine development, and smart contract audit.</p>
+                <!-- Details Column -->
+                <div class="token-details-col">
+                    <div class="token-info-card">
+                        <h3>Token Details</h3>
+                        <div class="info-row">
+                            <span>Name</span>
+                            <span class="highlight">TAIN Token</span>
+                        </div>
+                        <div class="info-row">
+                            <span>Symbol</span>
+                            <span class="highlight">TAIN</span>
+                        </div>
+                        <div class="info-row">
+                            <span>Network</span>
+                            <span class="highlight">BSC (BEP-20)</span>
+                        </div>
+                        <div class="info-row contract-row">
+                            <span>Contract</span>
+                            <div class="contract-box">
+                                <span id="contract-address">0x1234...5678</span>
+                                <button class="btn-copy" onclick="copyAddress()">📋</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-phase">Phase 2</span>
-                            <h3>Launch</h3>
-                            <p>Website live, Token presale, Beta testing access for early holders.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-phase">Phase 3</span>
-                            <h3>Expansion</h3>
-                            <p>Mobile app release, Global tournaments, CEX listings.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-phase">Phase 4</span>
-                            <h3>Metaverse</h3>
-                            <p>3D Social Hubs, VR Integration, DAO Governance implementation.</p>
-                        </div>
+
+                    <div class="distribution-list">
+                        <div class="dist-item"><span class="dot dot-1"></span> Game Rewards (30%)</div>
+                        <div class="dist-item"><span class="dot dot-2"></span> Liquidity (25%)</div>
+                        <div class="dist-item"><span class="dot dot-3"></span> Team (20%)</div>
+                        <div class="dist-item"><span class="dot dot-4"></span> Marketing (15%)</div>
+                        <div class="dist-item"><span class="dot dot-5"></span> Reserve (10%)</div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Trade Section (Buy/Sell) -->
+    <section class="trade-section" id="trade">
+        <div class="container">
+            <div class="trade-container">
+                <div class="trade-header">
+                    <h2 class="section-title">SWAP <span class="gradient-text">TOKENS</span></h2>
+                    <p>Buy and Sell TAIN instantly on BSC</p>
+                </div>
+
+                <div class="swap-card">
+                    <div class="swap-tabs">
+                        <button class="tab-btn active" onclick="setSwapMode('buy')">Buy TAIN</button>
+                        <button class="tab-btn" onclick="setSwapMode('sell')">Sell TAIN</button>
+                    </div>
+
+                    <div class="swap-body">
+                        <!-- Input Token -->
+                        <div class="token-input-group">
+                            <div class="input-header">
+                                <label>You Pay</label>
+                                <span class="balance">Balance: <span id="pay-balance">0.00</span></span>
+                            </div>
+                            <div class="input-box">
+                                <input type="number" id="pay-amount" placeholder="0.0" oninput="calculateSwap()">
+                                <div class="token-selector" id="pay-token">
+                                    <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB">
+                                    <span>BNB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Swap Icon -->
+                        <div class="swap-divider">
+                            <div class="swap-icon-circle">↓</div>
+                        </div>
+
+                        <!-- Output Token -->
+                        <div class="token-input-group">
+                            <div class="input-header">
+                                <label>You Receive</label>
+                                <span class="balance">Balance: <span id="receive-balance">0.00</span></span>
+                            </div>
+                            <div class="input-box">
+                                <input type="number" id="receive-amount" placeholder="0.0" readonly>
+                                <div class="token-selector" id="receive-token">
+                                    <span class="tain-emoji">🎱</span>
+                                    <span>TAIN</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price Info -->
+                        <div class="price-info">
+                            <span>Price</span>
+                            <span id="price-display">1 BNB = 10,000 TAIN</span>
+                        </div>
+
+                        <!-- Action Button -->
+                        <button class="btn btn-primary btn-block btn-swap" id="swap-btn">Connect Wallet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">The Path</span>
+                <h2 class="section-title">PROJECT <span class="gradient-text">ROADMAP</span></h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 1</span>
+                        <h3>Inception</h3>
+                        <p>Game concept, physics engine development, and smart contract audit.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 2</span>
+                        <h3>Launch</h3>
+                        <p>Website live, Token presale, Beta testing access for early holders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 3</span>
+                        <h3>Expansion</h3>
+                        <p>Mobile app release, Global tournaments, CEX listings.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 4</span>
+                        <h3>Metaverse</h3>
+                        <p>3D Social Hubs, VR Integration, DAO Governance implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
